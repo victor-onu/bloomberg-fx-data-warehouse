@@ -3,6 +3,7 @@ package com.victor.BloombergFXDataWarehouse.service;
 import com.victor.BloombergFXDataWarehouse.dto.DealDTO;
 import com.victor.BloombergFXDataWarehouse.exception.DealNotFoundException;
 import com.victor.BloombergFXDataWarehouse.exception.DuplicateDealException;
+import com.victor.BloombergFXDataWarehouse.exception.IllegalArgumentException;
 import com.victor.BloombergFXDataWarehouse.mapper.DealMapper;
 import com.victor.BloombergFXDataWarehouse.model.Deal;
 import com.victor.BloombergFXDataWarehouse.repository.DealRepository;
@@ -44,7 +45,7 @@ public class DealService {
     }
 
     private void validateISOCode(String isoCode) {
-        String isoCodePattern = "^[A-Za-z]{3}$";
+        String isoCodePattern = "^[A-Z]{3}$";
 
         if (!isoCode.matches(isoCodePattern)) {
             throw new IllegalArgumentException("Invalid ISO code: " + isoCode);

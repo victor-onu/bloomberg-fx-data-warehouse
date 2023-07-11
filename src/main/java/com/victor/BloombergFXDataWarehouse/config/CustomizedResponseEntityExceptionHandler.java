@@ -2,6 +2,7 @@ package com.victor.BloombergFXDataWarehouse.config;
 
 import com.victor.BloombergFXDataWarehouse.apiresponse.ApiResponse;
 import com.victor.BloombergFXDataWarehouse.exception.*;
+import com.victor.BloombergFXDataWarehouse.exception.IllegalArgumentException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +72,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(DuplicateDealException.class)
     public ResponseEntity<Object> handleDuplicateDealException(DuplicateDealException e) {
+        ApiResponse<?> ar = new ApiResponse<>(HttpStatus.BAD_REQUEST);
+        ar.setError(e.getMessage());
+        return new ResponseEntity<>(ar, ar.getStatus());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException e) {
         ApiResponse<?> ar = new ApiResponse<>(HttpStatus.BAD_REQUEST);
         ar.setError(e.getMessage());
         return new ResponseEntity<>(ar, ar.getStatus());
