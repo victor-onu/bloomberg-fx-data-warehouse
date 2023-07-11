@@ -84,194 +84,202 @@ The base URL for all API endpoints is http://localhost:8015/api.
 
 #### Create Deal
 
-Endpoint: POST /deals
+* Endpoint: POST /deals
 
-Create a new FX deal.
+* Create a new FX deal.
 
-Sample Request:
+* Sample Request:
 
 POST /deals
 
 Content-Type: application/json
-
+```json
 {
 
-\"dealUniqueId\": \"123\",
+"dealUniqueId": "123",
 
-\"fromCurrencyISOCode\": \"USD\",
+"fromCurrencyISOCode": "USD",
 
-\"toCurrencyISOCode\": \"EUR\",
+"toCurrencyISOCode": "EUR",
 
-\"dealTimestamp\": \"2023-07-09T10:00:00\",
+"dealTimestamp": "2023-07-09T10:00:00",
 
-\"dealAmount\": 100.0
+"dealAmount": 100.0
 
 }
+```
 
-Sample Response:
+* Sample Response:
 
-HTTP/1.1 201 Created
+* HTTP/1.1 201 Created
 
 Content-Type: application/json
-
+```json
 {
 
-\"status\": \"CREATED\",
+"status": "CREATED",
 
-\"message\": \"Deal saved successfully.\",
+"message": "Deal saved successfully.",
 
-\"data\": \"Deal saved successfully.\"
+"data": "Deal saved successfully."
 
 }
+```
 
 #### Get Deal by Unique ID
 
-Endpoint: GET /deals/{dealUniqueId}
+* Endpoint: GET /deals/{dealUniqueId}
 
-Retrieve an FX deal by its unique ID.
+* Retrieve an FX deal by its unique ID.
 
-Sample Request:
+* Sample Request:
 
-GET /deals/123
+* GET /deals/123
 
-Sample Response:
+* Sample Response:
 
 HTTP/1.1 200 OK
 
 Content-Type: application/json
-
+```json
 {
 
-\"status\": \"OK\",
+"status": "OK",
 
-\"message\": \"Deal retrieved successfully.\",
+"message": "Deal retrieved successfully.",
 
-\"data\": {
+"data": {
 
-\"dealUniqueId\": \"123\",
+"dealUniqueId": "123",
 
-\"fromCurrencyISOCode\": \"USD\",
+"fromCurrencyISOCode": "USD",
 
-\"toCurrencyISOCode\": \"EUR\",
+"toCurrencyISOCode": "EUR",
 
-\"dealTimestamp\": \"2023-07-09T10:00:00\",
+"dealTimestamp": "2023-07-09T10:00:00",
 
-\"dealAmount\": 100.0
-
-}
+"dealAmount": 100.0
 
 }
+
+}
+```
 
 #### Get All Deals
 
-Endpoint: GET /deals
+* Endpoint: GET /deals
 
-Retrieve all FX deals.
+* Retrieve all FX deals.
 
-Sample Request:
+* Sample Request:
 
-GET /deals
+* GET /deals
 
-Sample Response:
+* Sample Response:
 
 HTTP/1.1 200 OK
 
 Content-Type: application/json
 
+```json
 {
 
-\"status\": \"OK\",
+   "status": "OK",
 
-\"message\": \"Deals retrieved successfully.\",
+   "message": "Deals retrieved successfully.",
 
-\"data\": \[
+   "data": [
 
-{
+      {
 
-\"dealUniqueId\": \"123\",
+         "dealUniqueId": "123",
 
-\"fromCurrencyISOCode\": \"USD\",
+         "fromCurrencyISOCode": "USD",
 
-\"toCurrencyISOCode\": \"EUR\",
+         "toCurrencyISOCode": "EUR",
 
-\"dealTimestamp\": \"2023-07-09T10:00:00\",
+         "dealTimestamp": "2023-07-09T10:00:00",
 
-\"dealAmount\": 100.0
+         "dealAmount": 100.0
 
-},
+      },
 
-{
+      {
 
-\"dealUniqueId\": \"456\",
+         "dealUniqueId": "456",
 
-\"fromCurrencyISOCode\": \"GBP\",
+         "fromCurrencyISOCode": "GBP",
 
-\"toCurrencyISOCode\": \"USD\",
+         "toCurrencyISOCode": "USD",
 
-\"dealTimestamp\": \"2023-07-09T11:00:00\",
+         "dealTimestamp": "2023-07-09T11:00:00",
 
-\"dealAmount\": 200.0
+         "dealAmount": 200.0
+
+      }
+
+   ]
 
 }
 
-\]
-
-}
+```
 
 ### **Error Handling**
 
-If an error occurs during API requests, you will receive an error
+* If an error occurs during API requests, you will receive an error
 response with the corresponding status code and error message.
 
-Sample Error Response:
+* Sample Error Response:
 
 HTTP/1.1 400 Bad Request
 
 Content-Type: application/json
 
+```json
 {
 
-\"status\": \"BAD_REQUEST\",
+"status": "BAD_REQUEST",
 
-\"message\": \"Validation Failed\",
+"message": "Validation Failed",
 
-\"error\": \"Validation Failed\",
+"error": "Validation Failed",
 
-\"timestamp\": \"2023-07-09T12:00:00\",
+"timestamp": "2023-07-09T12:00:00",
 
-\"debugMessage\": null,
+"debugMessage": null,
 
-\"subErrors\": \[
+"subErrors": [
 
 {
 
-\"object\": \"dealDTO\",
+"object": "dealDTO",
 
-\"field\": \"toCurrencyISOCode\",
+"field": "toCurrencyISOCode",
 
-\"rejectedValue\": \"\",
+"rejectedValue": "",
 
-\"message\": \"To currency ISO code is required\"
+"message": "To currency ISO code is required"
 
 },
 
 {
 
-\"object\": \"dealDTO\",
+"object": "dealDTO",
 
-\"field\": \"fromCurrencyISOCode\",
+"field": "fromCurrencyISOCode",
 
-\"rejectedValue\": \"\",
+"rejectedValue": "",
 
-\"message\": \"From currency ISO code is required\"
-
-}
-
-\],
-
-\"data\": null
+"message": "From currency ISO code is required"
 
 }
+
+],
+
+"data": null
+
+}
+```
 
 
 
